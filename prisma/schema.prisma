@@ -1,8 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// ----------------------------------------------------------------
+// PROFESSIONAL TRUCK PARTS SCHEMA
+// ----------------------------------------------------------------
 
 generator client {
   provider = "prisma-client-js"
@@ -15,20 +13,53 @@ datasource db {
 }
 
 model Category {
-  id       String    @id @default(cuid())
-  name     String
-  products Product[]
+  id        String    @id @default(cuid())
+  name      String    @unique // ป้องกันชื่อหมวดหมู่ซ้ำ
+  slug      String?   @unique // สำหรับทำ URL สวยๆ (เช่น /category/engine)
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  partNumber  String   @unique
+  id          String  @id @default(cuid())
+  partNumber  String  @unique // รหัสพาร์ท (ห้ามซ้ำ)
   name        String
-  description String?
+  description String? @db.Text // เก็บข้อความยาวๆ ได้ดีกว่า
+
+  // ราคาและการเงิน
   price       Float
-  memberPrice Float?
-  stock       Int      @default(0)
-  imageUrl    String?
-  categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
+  memberPrice Float? // ราคาสมาชิก (ดีมากที่คุณใส่ไว้)
+  costPrice   Float? // ราคาต้นทุน (แอดมินเห็นคนเดียว ไว้ดูใจกำไร)
+
+  // คลังสินค้า
+  stock    Int @default(0)
+  minStock Int @default(5) // ระบบแจ้งเตือนเมื่อของใกล้หมด
+
+  // ข้อมูลเสริม
+  imageUrl String?
+  brand    String? // ยี่ห้ออะไหล่ (เช่น Hino, Isuzu, Denso)
+  location String? // ตำแหน่งเก็บในร้าน (เช่น ชั้น A2, โซนหลังร้าน)
+
+  // ความสัมพันธ์
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  // การตรวจสอบ (Audit)
+  isActive  Boolean  @default(true) // ไว้ "ปิด" สินค้าที่เลิกขาย แทนการลบทิ้งจริง
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt // *** สำคัญมาก! แก้ปัญหา Error ก่อนหน้านี้ ***
+
+  @@index([name]) // ทำดัชนีเพื่อให้ค้นหาด้วยชื่อได้เร็วขึ้น
+  @@index([partNumber]) // ทำดัชนีเพื่อให้ค้นหาด้วยรหัสพาร์ทได้เร็วขึ้น
+}
+
+// เพิ่มตาราง User สำหรับระบบ Login ในอนาคต
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
 }
