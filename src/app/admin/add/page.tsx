@@ -2,15 +2,23 @@ import prisma from "@/src/lib/prisma"
 import { createProduct } from "./action"
 
 export default async function AddProductPage() {
-  const categories = await prisma.category.findMany()
+  const categories = await prisma.category.findMany() // หา category.findMany ทั้งหมด
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-2xl mt-10 mb-20 border border-gray-100">
       <h1 className="text-3xl font-black mb-8 text-blue-900 uppercase tracking-tight">เพิ่มอะไหล่ใหม่ (ระบบบริหารสต็อก)</h1>
-      
+
+      {/* Form */}
       <form action={createProduct} className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* ข้อมูลหลัก */}
         <div className="md:col-span-2 space-y-4">
+          <label className="block text-sm font-bold text-gray-700 mb-2">รูปภาพอะไหล่ (แนะนำขนาด 1:1)</label>
+  <input 
+    name="image" 
+    type="file" 
+    accept="image/*" // บังคับให้เลือกได้เฉพาะไฟล์รูปภาพ
+    className="w-full text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer" 
+  />
           <h2 className="text-lg font-bold text-gray-400 border-b pb-2">ข้อมูลทั่วไป</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -76,6 +84,7 @@ export default async function AddProductPage() {
           </button>
         </div>
       </form>
+
     </div>
   )
 }
