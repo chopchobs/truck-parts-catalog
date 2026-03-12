@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 // กำหนด Type ของสินค้าให้ชัดเจน (เวลาพิมพ์ product. จะได้มี Auto-complete ขึ้นมาช่วยครับ)
 export interface ProductType {
   id: string;
@@ -44,9 +44,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         <div className="flex items-center justify-between">
           <span className="text-xl font-black text-slate-900">฿{product.price.toLocaleString()}</span>
-          <button className="bg-slate-900 text-white text-xs px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+          <Link 
+            href={`/product/${product.id}`} 
+            className="bg-slate-900 text-white text-xs px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors font-bold text-center"
+          >
             รายละเอียด
-          </button>
+          </Link>
         </div>
       </div>
     </div>
