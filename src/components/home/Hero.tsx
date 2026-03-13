@@ -21,12 +21,23 @@ export default function Hero() {
             C.RUAMCHANG: TRUCK SERVICES & PARTS
           </span>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-5 tracking-tight">
             อู่ ช.รวมช่าง <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-400 to-cyan-300 text-3xl md:text-5xl">
               รับซ่อมรถบรรทุก รถพ่วง รถสิบล้อ
             </span>
           </h1>
+
+          {/* 💡 ส่วนที่เพิ่มใหม่: กล่องพิกัดร้านแบบเด่นๆ สะดุดตา */}
+          <div className="flex items-center gap-3 mb-6 bg-slate-800/60 w-fit px-5 py-3 rounded-xl backdrop-blur-md border border-slate-600/50 shadow-lg">
+            <svg className="w-7 h-7 text-red-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span className="text-xl md:text-2xl font-bold text-white tracking-wide">
+              พิกัด: <span className="text-teal-400">อ.หล่มสัก จ.เพชรบูรณ์</span>
+            </span>
+          </div>
 
           <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-xl font-light">
             บริการรับซ่อมรถขนาดใหญ่ทุกชนิด และรับสั่งอะไหล่รถพ่วง สิบล้อ หกล้อ บริการด้วยใจและประสบการณ์ช่างมืออาชีพ
@@ -35,10 +46,10 @@ export default function Hero() {
           {/* ปุ่ม Call to Action */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="#products" 
+              href="#Services"
               className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-center transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 group"
             >
-              ดูสินค้าทั้งหมด
+              ดูบริการทั้งหมด
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </Link>
             
@@ -46,19 +57,18 @@ export default function Hero() {
               href="/contact" 
               className="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-center backdrop-blur-md transition-all flex items-center justify-center gap-2"
             >
-              ติดต่อสอบถาม
+              ติดต่อสอบถาม / แผนที่
             </Link>
           </div>
         </div>
       </div>
 
       {/* 3. แถบข้อมูลความน่าเชื่อถือ (Trust Indicators) ด้านล่าง */}
-   {/* 3. แถบข้อมูลความน่าเชื่อถือ (Trust Indicators) ด้านล่าง */}
       <div className="relative z-10 border-t border-white/10 bg-slate-900/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x divide-white/10">
             
-            {/* ช่อง 1: ประสบการณ์ (เปลี่ยนตัวเลขปีได้ตามจริงเลยครับ) */}
+            {/* ช่อง 1: ประสบการณ์ */}
             <div className="px-4 hover:scale-105 transition-transform">
               <span className="block text-2xl font-black text-teal-400 mb-1">15+ ปี</span>
               <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">ประสบการณ์ซ่อมรถใหญ่</span>
