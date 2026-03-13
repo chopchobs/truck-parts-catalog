@@ -1,34 +1,91 @@
 import React from 'react';
+import Link from 'next/link'; // 💡 1. อย่าลืม Import Link เข้ามาใช้งานครับ
 
 export default function Services() {
   const servicesList = [
-    { title: "พวงมาลัย/ช่วงล่าง", icon: "⚙️" },
-    { title: "ชุดเกียร์", icon: "🛠️" },
-    { title: "งานตัวถัง", icon: "🚛" },
-    { title: "เบรค", icon: "🛑" },
-    { title: "เปลี่ยนถ่ายน้ำมันเครื่อง", icon: "🛢️" },
-    { title: "บริการอื่นๆ", icon: "🔧" }
+    { 
+      title: "ระบบช่วงล่าง / พวงมาลัย", 
+      desc: "เช็คระยะ ลูกหมาก โช้คอัพ ตั้งศูนย์ ถ่วงล้อ จบทุกอาการสั่น ร่อน กินซ้ายขวา", 
+      icon: "⚙️" 
+    },
+    { 
+      title: "ระบบเกียร์ / เฟืองท้าย", 
+      desc: "ซ่อมเกียร์ธรรมดา-ออโต้ เปลี่ยนซีล แก้เสียงหอน เข้าเกียร์ยาก กระตุก", 
+      icon: "🛠️" 
+    },
+    { 
+      title: "เบรก / คลัตช์", 
+      desc: "เปลี่ยนผ้าเบรก เจียรจาน ย้ำคลัตช์ แก้ปัญหาเบรกจม เบรกไม่อยู่ มั่นใจทุกเส้นทาง", 
+      icon: "🛑" 
+    },
+    { 
+      title: "เปลี่ยนถ่ายน้ำมันเครื่อง", 
+      desc: "บริการเปลี่ยนถ่ายของเหลวเต็มระบบ พร้อมเช็คสภาพเครื่องยนต์", 
+      icon: "🛢️" 
+    },
+    { 
+      title: "งานซ่อมตัวถัง / แชสซี", 
+      desc: "ดัดแชสซี เคาะ ปะผุ ด้วยเครื่องมือมาตรฐานสากล คืนสภาพรถให้เหมือนใหม่", 
+      icon: "🚛" 
+    },
+    { 
+      title: "ระบบไฟ ", 
+      desc: "เช็คระบบไฟรอบคัน ไดชาร์จ ไดสตาร์ท เราแก้จบ", 
+      icon: "⚡" 
+    }
   ];
 
   return (
-    <section className="bg-slate-50 py-16 px-4 border-t border-slate-200 font-sans">
-      <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-black text-slate-800 tracking-tight">บริการของ <span className="text-teal-700">อู่ ช.รวมช่าง</span></h2>
-          <div className="h-1.5 w-24 bg-teal-600 mx-auto mt-4 rounded-full"></div>
+    <section  id='Services' className="bg-slate-50 py-24 px-4 font-sans relative overflow-hidden">
+      
+      <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100 rounded-full opacity-50 blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
+        
+        <div className="text-center mb-16">
+          <span className="inline-block py-1 px-3 rounded-full bg-teal-100 text-teal-700 font-bold text-sm mb-4">
+            🛡️ รับประกันงานซ่อมทุกชิ้น
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-800 tracking-tight mb-4">
+            บริการมาตรฐาน <span className="text-teal-600">อู่ ช.รวมช่าง</span>
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+            จบทุกปัญหารถบรรทุกและรถยนต์ ด้วยทีมช่างผู้ชำนาญการ ประสบการณ์ยาวนานกว่า 20 ปี พร้อมเครื่องมือทันสมัย
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {servicesList.map((service, index) => (
-            <div 
+            // 💡 2. เปลี่ยนจาก <div> เป็น <Link href="/contact"> และเปลี่ยนเป็น cursor-pointer
+            <Link 
+              href="/contact"
               key={index} 
-              className="bg-teal-700 text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-lg hover:bg-teal-600 hover:-translate-y-1 transition-all duration-300 cursor-default border-2 border-teal-800/50"
+              className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl border border-slate-100 hover:border-teal-500 transition-all duration-500 cursor-pointer relative overflow-hidden  flex-col h-full flex"
             >
-              <span className="text-4xl mb-3">{service.icon}</span>
-              <h3 className="text-lg md:text-xl font-bold tracking-wide">{service.title}</h3>
-            </div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-teal-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 shrink-0 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300 shadow-inner">
+                  {service.icon}
+                </div>
+                <div className="pt-2">
+                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors">
+                    {service.title}
+                  </h3>
+                </div>
+              </div>
+              
+              <p className="text-slate-500 leading-relaxed text-sm flex-1 mt-2">
+                {service.desc}
+              </p>
+
+              <div className="mt-6 flex items-center text-sm font-bold text-teal-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2.5 group-hover:translate-x-0">
+                ปรึกษาช่างคลิก <span className="ml-2">→</span>
+              </div>
+            </Link>
           ))}
         </div>
+
       </div>
     </section>
   );

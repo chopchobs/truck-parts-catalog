@@ -59,7 +59,7 @@ export default function Navbar() {
           </Link>
 
           {/* 💡 ช่องค้นหา (Desktop) - เปลี่ยนเป็น <form> */}
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl relative">
+          {/* <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl relative">
             <input 
               type="text" 
               value={searchQuery}
@@ -70,12 +70,12 @@ export default function Navbar() {
             <button type="submit" className="absolute right-1 top-1 bottom-1 bg-teal-600 hover:bg-teal-700 text-white p-2 rounded-full transition-colors flex items-center justify-center w-10">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
-          </form>
+          </form> */}
 
           {/* เมนู & ปุ่มต่างๆ */}
           <div className="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600">
             <Link href="/" className="hover:text-teal-600 transition-colors">หน้าแรก</Link>
-            <Link href="/products" className="hover:text-teal-600 transition-colors">หมวดหมู่สินค้า</Link>
+            {/* <Link href="/products" className="hover:text-teal-600 transition-colors">หมวดหมู่สินค้า</Link> */}
             <Link href="/contact" className="hover:text-teal-600 transition-colors">ติดต่อเรา</Link>
           </div>
 
