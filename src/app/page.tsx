@@ -3,10 +3,8 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import Ourstory from "../components/home/Ourstory";
 import Hero from "../components/home/Hero";
-import ProductList from "../components/home/ProductList"; // เพิ่มตัวนี้
 import Services from "../components/home/Service";
 import Brands from "../components/home/Brands";
-import Reviews from "../components/home/Reviews";
 import CallToAction from "../components/home/CallToAction";
 
 export default async function HomePage() {
