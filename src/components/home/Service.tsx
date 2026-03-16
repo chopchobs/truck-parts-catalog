@@ -45,30 +45,34 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* 💡 1. ปรับ grid-cols-1 เป็น grid-cols-2 และลด gap บนมือถือลงให้เหลือ gap-3 */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {servicesList.map((service, index) => (
-            // 💡 2. เปลี่ยนจาก <div> เป็น <Link href="/contact"> และเปลี่ยนเป็น cursor-pointer
             <Link 
               href="/contact"
               key={index} 
-              className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl border border-slate-100 hover:border-teal-500 transition-all duration-500 cursor-pointer relative overflow-hidden  flex-col h-full flex"
+              // 💡 2. เปลี่ยน p-8 เป็น p-4 md:p-8 (มือถือขอบบางลง คอมพิวเตอร์ขอบหนาเท่าเดิม)
+              className="group bg-white rounded-3xl p-4 md:p-8 shadow-sm hover:shadow-2xl border border-slate-100 hover:border-teal-500 transition-all duration-500 cursor-pointer relative overflow-hidden flex-col h-full flex"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-teal-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 shrink-0 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300 shadow-inner">
+              {/* 💡 3. ปรับให้บนมือถือไอคอนกับตัวหนังสืออยู่คนละบรรทัด (flex-col) พอเป็นจอใหญ่ค่อยอยู่บรรทัดเดียวกัน (md:flex-row) */}
+              <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4 mb-2 md:mb-4">
+                
+                {/* 💡 4. ย่อขนาดกรอบไอคอนบนมือถือลงนิดนึง (w-12 h-12 text-2xl) */}
+                <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 group-hover:rotate-6 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300 shadow-inner">
                   {service.icon}
                 </div>
-                <div className="pt-2">
-                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors">
+                <div className="pt-1 md:pt-2">
+                  {/* 💡 5. ปรับขนาดตัวหนังสือบนมือถือให้เล็กลงหน่อย (text-base md:text-xl) */}
+                  <h3 className="text-base md:text-xl font-bold text-slate-800 group-hover:text-teal-700 transition-colors leading-tight">
                     {service.title}
                   </h3>
                 </div>
               </div>
               
-
-              <div className="mt-6 flex items-center text-sm font-bold text-teal-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2.5 group-hover:translate-x-0">
-                ปรึกษาช่างคลิก <span className="ml-2">→</span>
+              <div className="mt-auto pt-4 flex items-center text-xs md:text-sm font-bold text-teal-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2.5 group-hover:translate-x-0">
+                ปรึกษาช่างคลิก <span className="ml-1 md:ml-2">→</span>
               </div>
             </Link>
           ))}
