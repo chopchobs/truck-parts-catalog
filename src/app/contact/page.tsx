@@ -84,14 +84,17 @@ export default function ContactPage() {
           </div>
 
           {/* ฝั่งขวา: แผนที่ Google Maps แบบฝังพิกัดจริง */}
-          <div className="w-full md:w-1/2 min-h-1-100 bg-slate-200 relative">
+          <div className="w-full bg-slate-200 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+  
             <iframe 
-              src="https://maps.google.com/maps?q=อู่+ช.รวมช่าง+หล่มสัก&hl=th&z=15&output=embed"
-              className="absolute inset-0 w-full h-full border-0"
-              allowFullScreen={false} 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            // ใช้พิกัดจากลิงก์ของเฮียช็อป และสั่ง output=embed เพื่อให้แสดงเป็นแผนที่ฝังเว็บ
+            src="https://maps.google.com/maps?q=16.7717238,101.2263177&hl=th&z=17&output=embed" 
+            className="w-full h-75 md:h-112.5 border-0" 
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="แผนที่ อู่ ช.รวมช่าง หล่มสัก"
+          ></iframe>
           </div>
           
         </div>
