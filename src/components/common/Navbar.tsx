@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* เมนู & ปุ่มต่างๆ */}
           <div className="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600">
             <Link href="/" className="hover:text-teal-600 transition-colors">หน้าแรก</Link>
-            {/* <Link href="/products" className="hover:text-teal-600 transition-colors">หมวดหมู่สินค้า</Link> */}
+            <Link href="#Ourstory" className="hover:text-teal-600 transition-colors">เกี่ยวกับเรา</Link>
             <Link href="/contact" className="hover:text-teal-600 transition-colors">ติดต่อเรา</Link>
           </div>
 
@@ -100,7 +100,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-b border-slate-100 px-4 py-4 space-y-4 shadow-xl absolute w-full left-0">
           {/* 💡 ช่องค้นหา (Mobile) - เปลี่ยนเป็น <form> */}
           <form onSubmit={handleSearch} className="relative">
-            <input 
+            {/* <input 
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -109,12 +109,12 @@ export default function Navbar() {
             />
             <button type="submit" className="absolute right-3 top-3 text-slate-400">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </button>
+            </button> */}
           </form>
           <nav className="flex flex-col gap-2 font-bold text-slate-600">
-            <Link href="/" className="block p-3 bg-slate-50 rounded-xl">หน้าแรก</Link>
-            <Link href="/products" className="block p-3 hover:bg-slate-50 rounded-xl">หมวดหมู่สินค้า</Link>
-            <Link href="/contact" className="block p-3 hover:bg-slate-50 rounded-xl">ติดต่อเรา</Link>
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 bg-slate-50 rounded-xl">หน้าแรก</Link>
+            <Link href="/#Ourstory" onClick={() => setIsMobileMenuOpen(false)} className="block p-3 hover:bg-slate-50 rounded-xl">เกี่ยวกับเรา</Link>
+            <Link href="/contact"  onClick={() => setIsMobileMenuOpen(false)}className="block p-3 hover:bg-slate-50 rounded-xl">ติดต่อเรา</Link>
           </nav>
         </div>
       )}
