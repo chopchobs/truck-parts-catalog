@@ -6,6 +6,7 @@ import Hero from "../components/home/Hero";
 import Services from "../components/home/Service";
 import Brands from "../components/home/Brands";
 import CallToAction from "../components/home/CallToAction";
+import FacilitySlider from "../components/home/FacilitySlider";
 
 export default async function HomePage() {
   // หาสินค้าใน cloud-supabase และส่งไปให้ List
@@ -20,6 +21,7 @@ export default async function HomePage() {
       <Hero />
       <Brands/>
       <Services />
+      <FacilitySlider />
       {/* <ProductList products={products} /> */}
       {/* <Reviews/> */}
       <Ourstory />
